@@ -1,4 +1,6 @@
+<?php
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +11,8 @@
     <title>Adonia Hotel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/countup.js"></script>
+
 
 </head>
 
@@ -126,19 +130,21 @@
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-orange-500">About Adonia Hotel</h2>
         <p class="text-gray-600 mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <div class="flex items-center mb-4">
-          <div class="w-1/3 text-center">
-            <h3 class="text-2xl font-bold text-primary">500+</h3>
-            <p class="text-gray-600">Clients</p>
-          </div>
-          <div class="w-1/3 text-center">
-            <h3 class="text-2xl font-bold text-primary">1000+</h3>
-            <p class="text-gray-600">Rooms</p>
-          </div>
-          <div class="w-1/3 text-center">
-            <h3 class="text-2xl font-bold text-primary">200+</h3>
-            <p class="text-gray-600">Staff</p>
-          </div>
+            <div class="w-1/3 text-center">
+                <h3 class="text-2xl font-bold text-primary number-animate" id="clientsCount">500+</h3>
+                <p class="text-gray-600">Clients</p>
+            </div>
+            <div class="w-1/3 text-center">
+                <h3 class="text-2xl font-bold text-primary number-animate" id="roomsCount">1000+</h3>
+                <p class="text-gray-600">Rooms</p>
+            </div>
+            <div class="w-1/3 text-center">
+                <h3 class="text-2xl font-bold text-primary number-animate" id="staffCount">200+</h3>
+                <p class="text-gray-600">Staff</p>
+            </div>
         </div>
+
+
       </div>
     </div>
     <div class="w-full md:w-1/2 lg:w-2/5 mt-8 md:mt-0">
@@ -210,19 +216,19 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Service 1 -->
       <div class="bg-white rounded-lg shadow-md p-6">
-        <img src="https://www.food-safety.com/ext/resources/eDigest/2022/caterers.jpg?1659729468" alt="Catering" class="w-full h-40 object-cover mb-4 rounded-lg">
+        <img src="images/catering.jpg" alt="Catering" class="w-full h-40 object-cover mb-4 rounded-lg">
         <h3 class="text-xl font-bold mb-2">Catering</h3>
         <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
       <!-- Service 2 -->
       <div class="bg-white rounded-lg shadow-md p-6">
-        <img src="https://www.food-safety.com/ext/resources/eDigest/2022/caterers.jpg?1659729468" alt="Rooms" class="w-full h-40 object-cover mb-4 rounded-lg">
+        <img src="images/bed.jpg" alt="Rooms" class="w-full h-40 object-cover mb-4 rounded-lg">
         <h3 class="text-xl font-bold mb-2">Rooms</h3>
         <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
       <!-- Service 3 -->
       <div class="bg-white rounded-lg shadow-md p-6">
-        <img src="https://www.food-safety.com/ext/resources/eDigest/2022/caterers.jpg?1659729468" alt="Party" class="w-full h-40 object-cover mb-4 rounded-lg">
+        <img src="images/party.jpg" alt="Party" class="w-full h-40 object-cover mb-4 rounded-lg">
         <h3 class="text-xl font-bold mb-2">Party</h3>
         <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
@@ -337,6 +343,16 @@
     </div>
   </div>
 </section>
+<!-- our location -->
+<section class="hotel-map pb-8">
+  <div class="container mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Hotel Map</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15948.362256636223!2d31.4128112!3d2.1187933!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x176ff74a52061aeb%3A0x7628c83eb3c0dc90!2sHotel%20Adonia!5e0!3m2!1sen!2sug!4v1684166901594!5m2!1sen!2sug" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
 
 
 <!--footer  -->
@@ -432,7 +448,52 @@
   });
 </script>
 
+<script>
+    
+ // Step 1: Add the 'number-animate' class to each number element
 
+// Step 2: Define the numberAnimation function
+function numberAnimation(entries, observer) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      // Start the number animation
+      animateNumber(entry.target);
+      observer.unobserve(entry.target); // Stop observing after animation starts
+    }
+  });
+}
+
+// Step 3: Create an instance of the Intersection Observer
+var observer = new IntersectionObserver(numberAnimation, { threshold: 0.2 });
+
+// Step 4: Observe the target elements
+var numberElements = document.querySelectorAll('.number-animate');
+numberElements.forEach(function(element) {
+  observer.observe(element);
+});
+
+// Number animation function
+function animateNumber(element) {
+  var startValue = 0;
+  var endValue = parseInt(element.innerText);
+  var duration = 2000; // Animation duration in milliseconds
+  var range = endValue - startValue;
+  var currentIteration = 0;
+  var increment = Math.ceil(range / (duration / 16)); // Update every 16ms (60fps)
+
+  var interval = setInterval(function() {
+    currentIteration += increment;
+    if (currentIteration >= range) {
+      clearInterval(interval);
+      element.innerText = endValue;
+    } else {
+      element.innerText = startValue + currentIteration;
+    }
+  }, 16);
+}
+
+
+</script>
 
 </body>
 </html>
