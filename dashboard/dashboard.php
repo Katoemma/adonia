@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +26,9 @@
       <!-- Navigation Links -->
       <nav class="flex-1">
         <ul class="space-y-2">
-            <a href="dashboard.html"><li class="px-4 py-2 hover:bg-gray-700">Dashboard</li></a>
+          <a href="dashboard.html"><li class="px-4 py-2 bg-gray-700">Dashboard</li></a>
             <a href="dashboard_reservation.html"><li class="px-4 py-2 hover:bg-gray-700">Reservations</li></a>
-            <a href="dashboard_rooms.html"><li class="px-4 py-2 bg-gray-700">Rooms</li></a>
+            <a href="dashboard_rooms.html"><li class="px-4 py-2 hover:bg-gray-700">Rooms</li></a>
             <a href="dashboard_reports.html"><li class="px-4 py-2 hover:bg-gray-700">Reports</li></a>
         </ul>
       </nav>
@@ -67,45 +71,54 @@
   
       <!-- Content Area -->
       <main class="p-4">
-        
-        <!-- Room Management -->
-        <div class="p-4">
-          <h2 class="text-2xl font-bold mb-4">Room Management</h2>
-          <div class="bg-white shadow-md rounded-lg p-4">
-            <table class="w-full">
-              <thead>
-                <tr>
-                  <th class="py-2">Room Number</th>
-                  <th class="py-2">Room Type</th>
-                  <th class="py-2">Capacity</th>
-                  <th class="py-2">Price</th>
-                  <th class="py-2">Status</th>
-                  <th class="py-2">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="py-2">101</td>
-                  <td class="py-2">Standard</td>
-                  <td class="py-2">2</td>
-                  <td class="py-2">$100</td>
-                  <td class="py-2">Available</td>
-                  <td class="py-2">
-                    <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</button>
-                    <button class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
-                  </td>
-                </tr>
-                <!-- More room rows -->
-              </tbody>
-            </table>
+        <!-- Dashboard Overview -->
+        <section class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-bold mb-4">Dashboard Overview</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Total Reservations -->
+            <div class="bg-blue-500 text-white p-4 rounded-lg flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Total Reservations</h3>
+                <p class="text-4xl font-bold">250</p>
+              </div>
+              <i class="fas fa-calendar-check fa-3x"></i>
+            </div>
+      
+            <!-- Revenue -->
+            <div class="bg-green-500 text-white p-4 rounded-lg flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Revenue</h3>
+                <p class="text-4xl font-bold">$25,000</p>
+              </div>
+              <i class="fas fa-chart-line fa-3x"></i>
+            </div>
+      
+            <!-- Occupancy Rate -->
+            <div class="bg-yellow-500 text-white p-4 rounded-lg flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Occupancy Rate</h3>
+                <p class="text-4xl font-bold">85%</p>
+              </div>
+              <i class="fas fa-bed fa-3x"></i>
+            </div>
           </div>
-        </div>
+        </section>
+      
+        
         
       </main>
       
     </div>
   </div>
   
+
+
+
+
+  
+  
+
+
 
 <script src="https://cdn.tailwindcss.com"></script>
 </body>
