@@ -44,38 +44,61 @@
     </div>
   </div>
 
-  <!-- Room Management -->
-  <div class="p-4 w-1/2">
-    <h2 class="text-2xl font-bold mb-4">Room Management</h2>
-    <div class="bg-white shadow-md rounded-lg p-4">
-      <table class="w-full">
-        <thead>
+<!-- Room Management -->
+<div class="p-4 w-1/2">
+  <h2 class="text-2xl font-bold mb-4">Room Management</h2>
+  <div class="bg-white shadow-md rounded-lg p-4">
+    <table class="w-full">
+      <thead>
+        <tr class="text-center">
+          <th class="py-2">Room Number</th>
+          <th class="py-2">Room Type</th>
+          <th class="py-2">Capacity</th>
+          <th class="py-2">Price</th>
+          <th class="py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $items_per_page = 2; // Number of items to display per page
+        $total_rooms = count($rooms); // Total number of rooms
+        $total_pages = ceil($total_rooms / $items_per_page); // Calculate total number of pages
+
+        // Retrieve the current page number from the request
+        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        // Calculate the offset for the rooms array
+        $offset = ($current_page - 1) * $items_per_page;
+
+        // Get the rooms for the current page
+        $rooms_for_page = array_slice($rooms, $offset, $items_per_page);
+
+        foreach ($rooms_for_page as $key => $room) :
+        ?>
           <tr class="text-center">
-            <th class="py-2">Room Number</th>
-            <th class="py-2">Room Type</th>
-            <th class="py-2">Capacity</th>
-            <th class="py-2">Price</th>
-            <th class="py-2">Actions</th>
+            <td class="py-2"><?php echo $room['room_no'] ?> </td>
+            <td class="py-2"><?php echo $room['type'] ?></td>
+            <td class="py-2"><?php echo $room['capacity'] ?></td>
+            <td class="py-2"><?php echo $room['price'] ?></td>
+            <td class="py-2">
+              <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</button>
+              <button class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($rooms as $key => $room):?>
-            <tr class="text-center">
-              <td class="py-2"><?php echo $room['room_no']?> </td>
-              <td class="py-2"><?php echo $room['type']?></td>
-              <td class="py-2"><?php echo $room['capacity']?></td>
-              <td class="py-2"><?php echo $room['price']?></td>
-              <td class="py-2">
-                <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</button>
-                <button class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
-              </td>
-            </tr>
-          <?php endforeach;?>
-          <!-- More room rows -->
-        </tbody>
-      </table>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+
+    <!-- Pagination Links -->
+    <div class="pagination">
+      <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+        <a href="?page=<?php echo $i; ?>" class="<?php if ($i == $current_page) echo 'text-white font-bold p-1 border-2 rounded-full w-6 h-6 bg-blue-500'; ?>"><?php echo $i; ?></a>
+      <?php endfor; ?>
     </div>
+
   </div>
+</div>
+
 
 
 </main>
