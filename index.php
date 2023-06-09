@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adonia Hotel</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/countup.js"></script>
 
 
@@ -37,6 +38,13 @@
                     Book
                     </a>
                 </li>
+                <div class="ml-24 group">
+                  <a href="login.php" class="block text-black-600 hover:text-orange-500"><i class="fa fa-user-circle-o text-2xl" aria-hidden="true"></i></a>
+                  <div class="hidden absolute border-2 border-red-400 rounded-xl text-white bg-red-400 p-2 shadow-lg group-hover:block">
+                    <p>Only admin to login</p>
+                  </div>
+                </div>
+                
             </ul>
         </div>
         <div class="md:hidden">
@@ -59,6 +67,7 @@
           Book
         </a>
       </li>
+      <li><a href="#" class="block text-gray-300 hover:text-white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
     </ul>
   </div>
 </nav>
@@ -370,10 +379,10 @@
         <a href="#" class="text-white">Contact</a>
       </nav>
       <div class="flex justify-center space-x-6 mt-6">
-        <a href="#" class="text-white"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="text-white"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="text-white"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="text-white"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="text-white"><i class="fa fa-linkedin"></i></a>
       </div>
     </div>
     <div class="w-full md:w-1/4 lg:w-1/5 mt-8 md:mt-0">
