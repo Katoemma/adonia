@@ -1,76 +1,4 @@
-<?php
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adonia Hotel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/countup.js"></script>
-
-
-</head>
-
-
-<body>
-    <!-- HTML structure -->
-<!-- HTML structure -->
-<nav class="sticky top-0 left-0 z-50 bg-white">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-16">
-      <div class="flex items-center">
-        <a href="#" class="text-white text-lg font-semibold"><img src="images/logoo.png" class="h-10" alt="logo"></a>
-      </div>
-        <div class="hidden md:block">
-            <ul class="flex space-x-4">
-                <li><a href="#" class="text-black-600 hover:text-orange-500 md:text-xl">Home</a></li>
-                <li><a href="#" class="text-black-600 hover:text-orange-500 md:text-xl">Contacts</a></li>
-                <li><a href="#" class="text-black-600 hover:text-orange-500 md:text-xl">Rooms</a></li>
-                <li><a href="#" class="text-black-600 hover:text-orange-500 md:text-xl">Services</a></li>
-                <li>
-                    <a href="#" class="inline-block bg-orange-500 hover:bg-gray-600 text-white py-2 px-6 rounded-lg">
-                    Book
-                    </a>
-                </li>
-                <div class="ml-24 group">
-                  <a href="login.php" class="block text-black-600 hover:text-orange-500"><i class="fa fa-user-circle-o text-2xl" aria-hidden="true"></i></a>
-                  <div class="hidden absolute border-2 border-red-400 rounded-xl text-white bg-red-400 p-2 shadow-lg group-hover:block">
-                    <p>Only admin to login</p>
-                  </div>
-                </div>
-                
-            </ul>
-        </div>
-        <div class="md:hidden">
-            <button id="menu-toggle" class="focus:outline-none">
-                <svg class="text-black w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-  </div>
-  <div id="menu" class="md:hidden hidden">
-    <ul class="bg-gray-800 py-2 px-4">
-      <li><a href="#" class="block text-gray-300 hover:text-white">Home</a></li>
-      <li><a href="#" class="block text-gray-300 hover:text-white">Contacts</a></li>
-      <li><a href="#" class="block text-gray-300 hover:text-white">Rooms</a></li>
-      <li><a href="#" class="block text-gray-300 hover:text-white">Services</a></li>
-      <li>
-        <a href="#" class="block bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">
-          Book
-        </a>
-      </li>
-      <li><a href="#" class="block text-gray-300 hover:text-white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
-    </ul>
-  </div>
-</nav>
+<?php include 'includes/header.php'?>
 <!-- HTML structure -->
 <section class="hero">
   <div class="swiper-container overflow-hidden">
@@ -107,14 +35,14 @@
   <div class="container mx-auto">
     <div class="max-w-lg mx-auto">
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-orange-500">Search Availability</h2>
-      <form class="flex flex-wrap justify-center">
+      <form class="flex flex-wrap justify-center" action="search.php" method="post">
         <div class="w-full sm:w-1/2 md:w-1/4 px-2 mb-4">
           <label for="checkin" class="block text-gray-700 mb-2">Check-in Date:</label>
-          <input type="date" id="checkin" name="checkin" class="w-full bg-gray-100 border-2 border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-primary" required>
+          <input type="date" id="checkin" name="check_in" class="w-full bg-gray-100 border-2 border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-primary" required>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/4 px-2 mb-4">
           <label for="checkout" class="block text-gray-700 mb-2">Check-out:</label>
-          <input type="date" id="checkout" name="checkout" class="w-full bg-gray-100 border-2 border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-primary" required>
+          <input type="date" id="checkout" name="check_out" class="w-full bg-gray-100 border-2 border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-primary" required>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/4 px-2 mb-4">
           <label for="adults" class="block text-gray-700 mb-2">Adults:</label>
@@ -125,7 +53,7 @@
           <input type="number" id="children" name="children" class="w-full bg-gray-100 border-2 border-gray-200 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-primary" min="0" required>
         </div>
         <div class="w-full px-2 mb-4">
-          <button type="submit" class="w-full bg-black text-white rounded py-2 px-4 hover:bg-primary-dark transition-colors duration-300">Search</button>
+          <button type="submit" class="w-full bg-black text-white rounded py-2 px-4 hover:bg-primary-dark transition-colors duration-300" name="search_btn">Search</button>
         </div>
       </form>
     </div>
@@ -179,7 +107,6 @@
         <img src="images/bath2.jpg" alt="Room Image 1" class="w-full h-64 object-cover rounded-t-lg">
         <div class="p-4">
           <h3 class="text-lg font-bold mb-2">Deluxe Room</h3>
-          <p class="text-gray-600 mb-4">$150 per day</p>
           <p class="text-gray-700 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <div class="flex justify-between ">
           <a href="#" class="bg-red-600 text-white rounded py-2 px-8 hover:bg-primary-dark transition-colors duration-300">View Details</a>
@@ -193,7 +120,6 @@
         <img src="images/bed.jpg" alt="Room Image 2" class="w-full h-64 object-cover rounded-t-lg">
         <div class="p-4">
           <h3 class="text-lg font-bold mb-2">Executive Suite</h3>
-          <p class="text-gray-600 mb-4">$250 per day</p>
           <p class="text-gray-700 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <div class="flex justify-between">
           <a href="#" class="bg-red-600 text-white rounded py-2 px-8 hover:bg-primary-dark transition-colors duration-300">View Details</a>
@@ -207,7 +133,6 @@
         <img src="https://luxurylondon.co.uk/wp-content/uploads/2022/08/browns-hotel-mayfair-london-review-04.jpg" alt="Room Image 3" class="w-full h-64 object-cover rounded-t-lg">
         <div class="p-4">
           <h3 class="text-lg font-bold mb-2">Luxury Suite</h3>
-          <p class="text-gray-600 mb-4">$350 per day</p>
           <p class="text-gray-700 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <div class="flex justify-between">
             <a href="#" class="bg-red-600 text-white rounded py-2 px-8 hover:bg-primary-dark transition-colors duration-300">View Details</a>
@@ -364,145 +289,4 @@
 
 
 
-<!--footer  -->
-<footer class="bg-gradient-to-tr from-orange-500 to-rose-400 text-white py-12 px-2">
-  <div class="container mx-auto flex flex-wrap items-center justify-between">
-    <div class="w-full md:w-1/4 lg:w-1/5">
-      <img src="images/logoo.png" alt="Logo" class="w-32">
-    </div>
-    <div class="w-full md:w-2/4 lg:w-3/5 mt-8 md:mt-0">
-      <nav class="flex justify-center space-x-6">
-        <a href="#" class="text-white">Home</a>
-        <a href="#" class="text-white">Rooms</a>
-        <a href="#" class="text-white">Services</a>
-        <a href="#" class="text-white">About Us</a>
-        <a href="#" class="text-white">Contact</a>
-      </nav>
-      <div class="flex justify-center space-x-6 mt-6">
-        <a href="#" class="text-white"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="text-white"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="text-white"><i class="fa fa-instagram"></i></a>
-        <a href="#" class="text-white"><i class="fa fa-linkedin"></i></a>
-      </div>
-    </div>
-    <div class="w-full md:w-1/4 lg:w-1/5 mt-8 md:mt-0">
-      <form class="flex">
-        <input type="email" placeholder="Subscribe to our newsletter" class="w-full bg-white text-black rounded-l py-2 px-4 focus:outline-none">
-        <button type="submit" class="bg-red-600 text-white rounded-r py-2 px-4">Subscribe</button>
-      </form>
-    </div>
-    <div class="w-full mt-8 text-center">
-      <p>&copy; 2023 Adonia Hotel. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-
-
-
-
-<!-- Add Swiper library -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-  var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
-</script>
-
-
-
-
-
-<!-- Add Swiper library -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-  var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
-</script>
-
-
-
-
-
-<script>
-  // JavaScript code
-  document.getElementById('menu-toggle').addEventListener('click', function() {
-    var menu = document.getElementById('menu');
-    menu.classList.toggle('hidden');
-  });
-</script>
-
-<script>
-    
- // Step 1: Add the 'number-animate' class to each number element
-
-// Step 2: Define the numberAnimation function
-function numberAnimation(entries, observer) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      // Start the number animation
-      animateNumber(entry.target);
-      observer.unobserve(entry.target); // Stop observing after animation starts
-    }
-  });
-}
-
-// Step 3: Create an instance of the Intersection Observer
-var observer = new IntersectionObserver(numberAnimation, { threshold: 0.2 });
-
-// Step 4: Observe the target elements
-var numberElements = document.querySelectorAll('.number-animate');
-numberElements.forEach(function(element) {
-  observer.observe(element);
-});
-
-// Number animation function
-function animateNumber(element) {
-  var startValue = 0;
-  var endValue = parseInt(element.innerText);
-  var duration = 2000; // Animation duration in milliseconds
-  var range = endValue - startValue;
-  var currentIteration = 0;
-  var increment = Math.ceil(range / (duration / 16)); // Update every 16ms (60fps)
-
-  var interval = setInterval(function() {
-    currentIteration += increment;
-    if (currentIteration >= range) {
-      clearInterval(interval);
-      element.innerText = endValue;
-    } else {
-      element.innerText = startValue + currentIteration;
-    }
-  }, 16);
-}
-
-
-</script>
-
-</body>
-</html>
+<?php include 'includes/footer.php' ?>
