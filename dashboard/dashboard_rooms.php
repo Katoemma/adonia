@@ -60,7 +60,7 @@
       </thead>
       <tbody>
         <?php
-        $items_per_page = 2; // Number of items to display per page
+        $items_per_page = 5; // Number of items to display per page
         $total_rooms = count($rooms); // Total number of rooms
         $total_pages = ceil($total_rooms / $items_per_page); // Calculate total number of pages
 
@@ -81,8 +81,8 @@
             <td class="py-2"><?php echo $room['capacity'] ?></td>
             <td class="py-2"><?php echo $room['price'] ?></td>
             <td class="py-2">
-              <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</button>
-              <button class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
+              <a href="edit_rooms.php?id=<?php echo $room['id']?>" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</a>
+              <a href="edit_rooms.php?del_id=<?php echo $room['id']?>" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
             </td>
           </tr>
         <?php endforeach; ?>
